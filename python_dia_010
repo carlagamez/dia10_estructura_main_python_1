@@ -1,0 +1,160 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Día 10 — Estructura profesional con main()\n",
+        "\n",
+        "Hoy voy a reorganizar el gestor de tareas usando una función principal.\n",
+        "\n",
+        "Objetivo:\n",
+        "- centralizar la lógica del programa\n",
+        "- hacer el código más profesional\n",
+        "- mejorar la estructura\n",
+        "\n",
+        "Día: 10/100"
+      ],
+      "metadata": {
+        "id": "GD8Gr94hByvU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def mostrar_menu():\n",
+        "  print(\"\\n Gestor de tareas\")\n",
+        "  print(\"1. Agregar tarea\")\n",
+        "  print(\"2. Mostrar tareas\")\n",
+        "  print(\"3. Marcar tarea como completada\")"
+      ],
+      "metadata": {
+        "id": "SNhk4kBjB1Zg"
+      },
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def añadir_tarea(tareas):\n",
+        "  titulo = input(\"Ingrese el título de la tarea: \")\n",
+        "  estado = input(\"Ingrese el estado de la tarea (pendiente/completada): \").lower()\n",
+        "\n",
+        "  tarea = {\n",
+        "      \"titulo\": titulo,\n",
+        "      \"estado\": estado\n",
+        "  }\n",
+        "\n",
+        "  tareas.append(tarea)\n",
+        "  print(\"Tarea agregada con éxito\")"
+      ],
+      "metadata": {
+        "id": "1Y835dpjCC8y"
+      },
+      "execution_count": 9,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def mostrar_tareas(tareas):\n",
+        "  if len(tareas) == 0:\n",
+        "    print(\"No hay tareas para mostrar\")\n",
+        "  else:\n",
+        "    print(\"\\nLista de tareas:\")\n",
+        "    for i, tarea in enumerate(tareas, start=1):\n",
+        "      print(i, \"-\", tarea[\"titulo\"], \"| Estado:\", tarea[\"estado\"])"
+      ],
+      "metadata": {
+        "id": "L6PPbrSsCdoS"
+      },
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def main():\n",
+        "    tareas = []\n",
+        "    opcion = \"\"\n",
+        "\n",
+        "    while opcion != \"3\":\n",
+        "        mostrar_menu()\n",
+        "        opcion = input(\"Elige una opción: \")\n",
+        "\n",
+        "        if opcion == \"1\":\n",
+        "            añadir_tarea(tareas)\n",
+        "        elif opcion == \"2\":\n",
+        "            mostrar_tareas(tareas)\n",
+        "        elif opcion == \"3\":\n",
+        "            print(\"👋 Saliendo del programa\")\n",
+        "        else:\n",
+        "            print(\"Opción no válida\")"
+      ],
+      "metadata": {
+        "id": "xQniT6yxC7VZ"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "main()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ygEsic7wDc-P",
+        "outputId": "05c6e7dd-0656-40f4-c987-df4a849b1757"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            " Gestor de tareas\n",
+            "1. Agregar tarea\n",
+            "2. Mostrar tareas\n",
+            "3. Marcar tarea como completada\n",
+            "Elige una opción: Ir al gym\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Agregar tarea\n",
+            "2. Mostrar tareas\n",
+            "3. Marcar tarea como completada\n",
+            "Elige una opción: 3\n",
+            "👋 Saliendo del programa\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "XTeOLnTPDfJa"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
